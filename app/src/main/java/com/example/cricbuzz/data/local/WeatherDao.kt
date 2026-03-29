@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface WeatherDao {
 
-    @Query("SELECT * FROM forecast WHERE city = :city ORDER BY date ASC")
+    @Query("SELECT * FROM forecast WHERE city = :city COLLATE NOCASE ORDER BY date ASC")
     suspend fun getForecastByCity(city: String): List<ForecastEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
